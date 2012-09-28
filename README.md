@@ -10,9 +10,9 @@ on the search path), and type
 
     \usemodule[inrange]
 
-    \inrange{Figures}{:}[fig:a, fig:b, fig:c]
+    \inrange{Figures}{?}[fig:a, fig:b, fig:c]
 
-to get `Figures 1-3:`.
+to get "Figures 1-3?".
 
 ## TODO
 
@@ -22,13 +22,13 @@ to get `Figures 1-3:`.
 
 * Figure out how to let `\inrange` be a valid command for
   `\definereferenceformat`. The naïve approach,
-  `\definereferenceformat[inr][command=\inrange]`, doesn't work: the \goto is
+  `\definereferenceformat[inr][command=\inrange]`, doesn't work: the `\goto` is
   baked right into `\strc_references_pickup_goto_indeed`. See 
-  [strc-ref.mkvi](http://repo.or.cz/w/context.git/blob/HEAD:/tex/context/base/strc-ref.mkvi)
+  [strc-ref.mkvi](http://repo.or.cz/w/context.git/blob/HEAD:/tex/context/base/strc-ref.mkvi).
   Here is the baked-in \goto:
 
-    \doifreferencefoundelse{#label} % we need to resolve the text
-      {\goto{\referencesequence}[#label]}
-      {\let\currentreferencecontent\dummyreference
-        \goto{\referencesequence}[#label]}%
-    \strc_references_stop_goto}
+      \doifreferencefoundelse{#label} % we need to resolve the text
+        {\goto{\referencesequence}[#label]}
+        {\let\currentreferencecontent\dummyreference
+          \goto{\referencesequence}[#label]}%
+      \strc_references_stop_goto}
