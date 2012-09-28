@@ -1,0 +1,87 @@
+
+% Don't know how to obtain prefixsegmented numberstring given refstring
+% Once known, can alter inrange.lua to handle this case (hook
+% points marked with TODO in that file)
+% Until then, no need for setupcaption with prefixsegments
+% \setupcaption[figure][
+    %prefix=yes, 
+    %prefixsegments=section:subsection, 
+    %way=bysubsection]
+
+\usemodule[inrange]
+\setupinteraction[state=start]
+
+
+\starttext
+
+A complex set of ranges, with two unknown references, a prefix, and a
+suffix:
+See \inrange{Figures}{...}[
+    fig:a, 
+    fig:c, 
+    fig:d, 
+    fig:e, 
+    fig:g, 
+    fig:x, 
+    fig:h]
+
+Two figures, not a range. See \inrange{figures}[fig:a, fig:c].
+
+Two figures, adjacent.
+See \inrange{figures}[fig:a, fig:b].
+
+One figure, no range at all.
+See \inrange{figure}[fig:a].
+
+\hairline
+
+\definereferenceformat[inr][left=«, right=», command=\inrange]
+
+\inr{Figures }[fig:g, fig:b].
+
+
+\section{asdf}
+\subsection{asdf-a}
+    \placefigure[here][fig:a]{aaa}{
+    \startformula
+        1 + 1 = 2
+    \stopformula
+    }
+
+    \placefigure[here][fig:b]{bbb}{
+    \startformula
+        1 + 1 = 2
+    \stopformula
+    }
+    \placefigure[here][fig:c]{ccc}{
+    \startformula
+        1 + 1 = 2
+    \stopformula
+    }
+    \placefigure[here][fig:d]{ddd}{
+    \startformula
+        1 + 1 = 2
+    \stopformula
+    }
+    \placefigure[here][fig:e]{eee}{
+    \startformula
+        1 + 1 = 2
+    \stopformula
+    }
+    \placefigure[here][fig:f]{fff}{
+    \startformula
+        1 + 1 = 2
+    \stopformula
+    }
+    \placefigure[here][fig:g]{ggg}{
+    \startformula
+        1 + 1 = 2
+    \stopformula
+    }
+
+%\startluacode
+    %a = commands.savedlistprefixednumber(nil,6)}
+%\stopluacode
+
+
+\stoptext
