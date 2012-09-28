@@ -52,7 +52,7 @@ local function number_from_ref(refstring)
         -- then adapt get_runs as stated there, we can process prefixed
         -- numbers, too.
         if refstring == v.references.reference then
-            report("%s --> %d", refstring, v.numberdata.numbers[1])
+            report("%s --> %s", refstring, v.numberdata.numbers[1])
             return v.numberdata.numbers[1]
         end
     end
@@ -121,7 +121,6 @@ local function inrange(str)
 end
 
 userdata = userdata or { }
-local u = userdata
-u.get_runs = get_runs
-u.inrange = inrange
+userdata.get_runs = get_runs
+userdata.inrange = inrange
 

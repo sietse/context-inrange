@@ -1,0 +1,411 @@
+-- version: 1.19
+-- file: test-inrange
+-- format: cont-en
+-- stamp: 2012.09.16 23:18
+-- escape: [===[ ... ]===]
+
+local utilitydata = { }
+
+utilitydata = utilitydata or { }
+utilitydata.job = utilitydata.job or { }
+utilitydata.job.variables = utilitydata.job.variables or { }
+utilitydata.job.variables.checksums = utilitydata.job.variables.checksums or { }
+utilitydata.job.variables.checksums={
+ ["new"]="22AF645D1859CB5CA6DA0C484F1F37EA",
+ ["old"]="149603E6C03516362A8DA23F624DB945",
+}
+utilitydata = utilitydata or { }
+utilitydata.job = utilitydata.job or { }
+utilitydata.job.variables = utilitydata.job.variables or { }
+utilitydata.job.variables.collected = utilitydata.job.variables.collected or { }
+utilitydata.job.variables.collected={
+ ["randomseed"]=0.21182390498548,
+}
+utilitydata = utilitydata or { }
+utilitydata.job = utilitydata.job or { }
+utilitydata.job.passes = utilitydata.job.passes or { }
+utilitydata.job.passes.collected = utilitydata.job.passes.collected or { }
+utilitydata.job.passes.collected={
+}
+utilitydata = utilitydata or { }
+utilitydata.job = utilitydata.job or { }
+utilitydata.job.datasets = utilitydata.job.datasets or { }
+utilitydata.job.datasets.collected = utilitydata.job.datasets.collected or { }
+utilitydata.job.datasets.collected={
+}
+utilitydata = utilitydata or { }
+utilitydata.job = utilitydata.job or { }
+utilitydata.job.pagestates = utilitydata.job.pagestates or { }
+utilitydata.job.pagestates.collected = utilitydata.job.pagestates.collected or { }
+utilitydata.job.pagestates.collected={
+ ["float"]={ 1, 1, 1, 1, 1, 1, 2 },
+}
+utilitydata = utilitydata or { }
+utilitydata.job = utilitydata.job or { }
+utilitydata.job.structure = utilitydata.job.structure or { }
+utilitydata.job.structure.collected = utilitydata.job.structure.collected or { }
+utilitydata.job.structure.collected={
+ ["branches"]={},
+ ["name"]="test-inrange",
+ ["type"]="text",
+}
+utilitydata = utilitydata or { }
+utilitydata.structures = utilitydata.structures or { }
+utilitydata.structures.specials = utilitydata.structures.specials or { }
+utilitydata.structures.specials.collected = utilitydata.structures.specials.collected or { }
+utilitydata.structures.specials.collected={
+}
+utilitydata = utilitydata or { }
+utilitydata.structures = utilitydata.structures or { }
+utilitydata.structures.counters = utilitydata.structures.counters or { }
+utilitydata.structures.counters.collected = utilitydata.structures.counters.collected or { }
+utilitydata.structures.counters.collected={
+ ["endnote"]={
+  { 0 },
+ },
+ ["figure"]={
+  { 7 },
+ },
+ ["footnote"]={
+  { 0 },
+ },
+ ["formula"]={
+  { 0 },
+ },
+ ["graphic"]={
+  { 0 },
+ },
+ ["intermezzo"]={
+  { 0 },
+ },
+ ["itemgroup:itemize"]={
+  { 0 },
+ },
+ ["linenote"]={
+  { 0 },
+ },
+ ["paragraph"]={
+  { 0 },
+ },
+ ["realpage"]={
+  { 2 },
+ },
+ ["subpage"]={
+  { 0 },
+ },
+ ["table"]={
+  { 0 },
+ },
+ ["userpage"]={
+  { 2 },
+ },
+}
+utilitydata = utilitydata or { }
+utilitydata.structures = utilitydata.structures or { }
+utilitydata.structures.lists = utilitydata.structures.lists or { }
+utilitydata.structures.lists.collected = utilitydata.structures.lists.collected or { }
+utilitydata.structures.lists.collected={
+ {
+  ["metadata"]=3,
+  ["numberdata"]=2,
+  ["references"]={
+   ["block"]="bodypart",
+   ["internal"]=1,
+   ["realpage"]=1,
+   ["section"]=1,
+   ["tag"]="?",
+  },
+  ["titledata"]={
+   ["label"]="section",
+   ["title"]="asdf",
+  },
+ },
+ {
+  ["metadata"]=6,
+  ["numberdata"]=5,
+  ["references"]={
+   ["block"]="bodypart",
+   ["internal"]=2,
+   ["realpage"]=1,
+   ["section"]=2,
+   ["tag"]="?",
+  },
+  ["titledata"]={
+   ["label"]="subsection",
+   ["title"]="asdf-a",
+  },
+ },
+ {
+  ["metadata"]=10,
+  ["numberdata"]=9,
+  ["prefixdata"]=7,
+  ["references"]={
+   ["block"]="bodypart",
+   ["internal"]=3,
+   ["realpage"]=1,
+   ["reference"]="fig:a",
+   ["section"]=2,
+  },
+  ["titledata"]={
+   ["title"]="aaa",
+  },
+ },
+ {
+  ["metadata"]=10,
+  ["numberdata"]=12,
+  ["prefixdata"]=7,
+  ["references"]={
+   ["block"]="bodypart",
+   ["internal"]=4,
+   ["realpage"]=1,
+   ["reference"]="fig:b",
+   ["section"]=2,
+  },
+  ["titledata"]={
+   ["title"]="bbb",
+  },
+ },
+ {
+  ["metadata"]=10,
+  ["numberdata"]=14,
+  ["prefixdata"]=7,
+  ["references"]={
+   ["block"]="bodypart",
+   ["internal"]=5,
+   ["realpage"]=1,
+   ["reference"]="fig:c",
+   ["section"]=2,
+  },
+  ["titledata"]={
+   ["title"]="ccc",
+  },
+ },
+ {
+  ["metadata"]=10,
+  ["numberdata"]=16,
+  ["prefixdata"]=7,
+  ["references"]={
+   ["block"]="bodypart",
+   ["internal"]=6,
+   ["realpage"]=1,
+   ["reference"]="fig:d",
+   ["section"]=2,
+  },
+  ["titledata"]={
+   ["title"]="ddd",
+  },
+ },
+ {
+  ["metadata"]=10,
+  ["numberdata"]=18,
+  ["prefixdata"]=7,
+  ["references"]={
+   ["block"]="bodypart",
+   ["internal"]=7,
+   ["realpage"]=1,
+   ["reference"]="fig:e",
+   ["section"]=2,
+  },
+  ["titledata"]={
+   ["title"]="eee",
+  },
+ },
+ {
+  ["metadata"]=10,
+  ["numberdata"]=20,
+  ["prefixdata"]=7,
+  ["references"]={
+   ["block"]="bodypart",
+   ["internal"]=8,
+   ["realpage"]=1,
+   ["reference"]="fig:f",
+   ["section"]=2,
+  },
+  ["titledata"]={
+   ["title"]="fff",
+  },
+ },
+ {
+  ["metadata"]=10,
+  ["numberdata"]=22,
+  ["prefixdata"]=7,
+  ["references"]={
+   ["block"]="bodypart",
+   ["internal"]=9,
+   ["realpage"]=2,
+   ["reference"]="fig:g",
+   ["section"]=2,
+  },
+  ["titledata"]={
+   ["title"]="ggg",
+  },
+ },
+}
+utilitydata = utilitydata or { }
+utilitydata.structures = utilitydata.structures or { }
+utilitydata.structures.pages = utilitydata.structures.pages or { }
+utilitydata.structures.pages.collected = utilitydata.structures.pages.collected or { }
+utilitydata.structures.pages.collected={
+ {
+  ["block"]="bodypart",
+  ["number"]=1,
+  ["numberdata"]=23,
+  ["prefixdata"]=24,
+ },
+ {
+  ["block"]="bodypart",
+  ["number"]=2,
+  ["numberdata"]=23,
+  ["prefixdata"]=24,
+ },
+}
+utilitydata = utilitydata or { }
+utilitydata.structures = utilitydata.structures or { }
+utilitydata.structures.references = utilitydata.structures.references or { }
+utilitydata.structures.references.collected = utilitydata.structures.references.collected or { }
+utilitydata.structures.references.collected={
+}
+utilitydata = utilitydata or { }
+utilitydata.structures = utilitydata.structures or { }
+utilitydata.structures.references = utilitydata.structures.references or { }
+utilitydata.structures.references.referred = utilitydata.structures.references.referred or { }
+utilitydata.structures.references.referred={
+ { 1, 2 },
+ { 1, 4 },
+ { 1, 6 },
+ { 1, 8 },
+ { 1, 10 },
+ { 1, 12 },
+ { 1, 14 },
+ { 1, 16 },
+ { 1, 18 },
+ { 1, 20 },
+}
+utilitydata = utilitydata or { }
+utilitydata.structures = utilitydata.structures or { }
+utilitydata.structures.registers = utilitydata.structures.registers or { }
+utilitydata.structures.registers.collected = utilitydata.structures.registers.collected or { }
+utilitydata.structures.registers.collected={
+}
+utilitydata = utilitydata or { }
+utilitydata.job = utilitydata.job or { }
+utilitydata.job.positions = utilitydata.job.positions or { }
+utilitydata.job.positions.collected = utilitydata.job.positions.collected or { }
+utilitydata.job.positions.collected={
+}
+utilitydata = utilitydata or { }
+utilitydata.job = utilitydata.job or { }
+utilitydata.job.objects = utilitydata.job.objects or { }
+utilitydata.job.objects.collected = utilitydata.job.objects.collected or { }
+utilitydata.job.objects.collected={
+}
+utilitydata = utilitydata or { }
+utilitydata.structures = utilitydata.structures or { }
+utilitydata.structures.synonyms = utilitydata.structures.synonyms or { }
+utilitydata.structures.synonyms.collected = utilitydata.structures.synonyms.collected or { }
+utilitydata.structures.synonyms.collected={
+}
+utilitydata = utilitydata or { }
+utilitydata.structures = utilitydata.structures or { }
+utilitydata.structures.blocks = utilitydata.structures.blocks or { }
+utilitydata.structures.blocks.collected = utilitydata.structures.blocks.collected or { }
+utilitydata.structures.blocks.collected={
+}
+utilitydata = utilitydata or { }
+utilitydata.job = utilitydata.job or { }
+utilitydata.job.files = utilitydata.job.files or { }
+utilitydata.job.files.collected = utilitydata.job.files.collected or { }
+utilitydata.job.files.collected={
+}
+utilitydata.job.packed={
+ ["index"]={
+  { 0, 0, 1 },
+  {
+   ["block"]="bodypart",
+   ["numbers"]=1,
+   ["set"]="all",
+  },
+  {
+   ["catcodes"]=8,
+   ["coding"]="tex",
+   ["increment"]="yes",
+   ["kind"]="section",
+   ["name"]="section",
+  },
+  { 0, 0, 1, 1 },
+  {
+   ["block"]="bodypart",
+   ["numbers"]=4,
+   ["set"]="all",
+  },
+  {
+   ["catcodes"]=8,
+   ["coding"]="tex",
+   ["increment"]="yes",
+   ["kind"]="section",
+   ["name"]="subsection",
+  },
+  {
+   ["connector"]=".",
+   ["prefix"]="no",
+  },
+  { 1 },
+  {
+   ["numbers"]=8,
+  },
+  {
+   ["catcodes"]=8,
+   ["coding"]="tex",
+   ["kind"]="float",
+   ["level"]=4,
+   ["name"]="figure",
+  },
+  { 2 },
+  {
+   ["numbers"]=11,
+  },
+  { 3 },
+  {
+   ["numbers"]=13,
+  },
+  { 4 },
+  {
+   ["numbers"]=15,
+  },
+  { 5 },
+  {
+   ["numbers"]=17,
+  },
+  { 6 },
+  {
+   ["numbers"]=19,
+  },
+  { 7 },
+  {
+   ["numbers"]=21,
+  },
+  {
+   ["conversionset"]="pagenumber",
+  },
+  {
+   ["connector"]="–",
+   ["prefix"]="no",
+   ["set"]="part",
+  },
+ },
+ ["keys"]={
+  ["directives"]=true,
+  ["metadata"]=true,
+  ["numberdata"]=true,
+  ["numbers"]=true,
+  ["pagedata"]=true,
+  ["prefixdata"]=true,
+  ["processors"]=true,
+  ["sectiondata"]=true,
+  ["specification"]=true,
+ },
+ ["version"]=1.01,
+}
+
+return utilitydata
+
