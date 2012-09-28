@@ -6,14 +6,17 @@
 local report = logs.reporter("inrange")
 local errorcode = -99
 
+--- [PHG] use locals for faster lookups
+local tablesort = table.sort
+
 -- Given an array of numbers, return an array of runs in that list.
 -- Each run is itself an array with elements ["start"] and ["stop"]
 -- Pre-sorting is left in the user's hands
 local function get_runs(a)
-    runs = { }
-    run_start = 1
+    local runs = { }
+    local run_start = 1
     while run_start <= #a do
-        run_stop = run_start
+        local run_stop = run_start
         -- TODO replace a[run_stop] + 1 with
         -- increment_number_string(a[run_stop])
         -- that turns '1.2.1' into '1.2.2'
@@ -25,8 +28,11 @@ local function get_runs(a)
                 run_stop = run_stop + 1
             end
             report("%s--%s", run_start, run_stop)
-            table.insert(runs, {["start"] = a[run_start],
-                                ["stop"]   = a[run_stop]})
+            --- [PHG] table.insert is slow, better append explicitly
+            runs[#runs+1] = {
+              start = a[run_start],
+              stop  = a[run_stop],
+            }
         end
         run_start = run_stop + 1
     end
@@ -40,12 +46,13 @@ end
 local function number_from_ref(refstring)
     -- TODO ensure we only run when structures.lists.ordered.float
     -- already exists
-    for k,v in pairs(structures.lists.ordered.float.figure) do
+    --- [PHG] next() is the fastest iterator
+    for k,v in next, structures.lists.ordered.float.figure do
         -- TODO if we return the full '1.2.1' string here
         -- then adapt get_runs as stated there, we can process prefixed
         -- numbers, too.
         if refstring == v.references.reference then
-            report("%s --> %d", refstring, v.numberdata.numbers[1])
+            report("%s --> %s", refstring, v.numberdata.numbers[1])
             return v.numberdata.numbers[1]
         end
     end
@@ -58,52 +65,55 @@ end
 -- Input: an array of runs,
 -- Action: print something like '1, 3-5, and 8'
 local function typeset_runs(runs, args)
-    args = args or { }
-    range_char = args["range_char"] or '-'
-    run_sep = args["run_sep"] or ', '
-    last_sep = args["last_sep"] or run_sep
+    local args = args or { }
+    local range_char = args["range_char"] or '-'
+    local run_sep    = args["run_sep"] or ', '
+    local last_sep   = args["last_sep"] or run_sep
 
     local i = 0
-    for _, run in pairs(runs) do
-        if 0 < i and i < #runs - 1 then
-            context(run_sep)
-        end
-        if 0 < i and i == #runs - 1 then
-            context(last_sep)
+    for _, run in next,runs do
+        if 0 < i then
+            if i < #runs - 1 then
+                context(run_sep)
+            elseif i == #runs - 1 then
+                context(last_sep)
+            end
         end
         i = i + 1
 
-        context("\\in[%s]", run.start)
+        --- [PHG] use cld here -- looks more organized
+        context["in"]({run.start})
         if run.start ~= run.stop then
-            context("%s\\in[%s]", range_char, run.stop)
+            context(range_char)
+            context["in"]({run.stop})
         end
     end
 end
 
 -- User-facing function: 
 local function inrange(str)
-    if not structures.lists.ordered["float"] then
+    if not structures.lists.ordered.float then
         -- float table does not yet exist, do nothing this run
         return false
     end
 
     local refstrings_unsorted = utilities.parsers.settings_to_array(str)
-    local refstrings = { }
-    local numbers = { }
+    local refstrings          = { }
+    local numbers             = { }
 
     -- turn refstrings into numbers, and remember what goes with what
-    for _, ref in pairs(refstrings_unsorted) do
+    for _, ref in next,refstrings_unsorted do
         local n = number_from_ref(ref)
-        table.insert(numbers, n)
-        refstrings[n] = ref
+        numbers[#numbers+1] = n
+        refstrings[n]       = ref
     end
     -- sort the numbers, and turn them into a runs table
-    table.sort(numbers)
+    tablesort(numbers)
     local runs = get_runs(numbers)
 
     -- replace the numbers in the runs table with refstrings, and
     -- typeset
-    for k, run in pairs(runs) do
+    for k, run in next,runs do
         runs[k].start = refstrings[run.start]
         runs[k].stop = refstrings[run.stop]
     end
@@ -111,6 +121,6 @@ local function inrange(str)
 end
 
 userdata = userdata or { }
-u = userdata
-u.get_runs = get_runs
-u.inrange = inrange
+userdata.get_runs = get_runs
+userdata.inrange = inrange
+
